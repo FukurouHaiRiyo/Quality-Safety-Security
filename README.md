@@ -76,7 +76,3 @@ Please check https://www.ipqualityscore.com/ for more information.
 #### 3. What does this app show me?
 
 This app will show you hwo trust worthy are emails, phone numbers and links.
-
-# qss
-# qss
-# qss
