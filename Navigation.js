@@ -1,10 +1,13 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import Home from './screens/Home';
-import SettingsScreen from "./screens/Settings";
+import About from './screens/About';
+import EmailAddressCheck from './screens/components/EmailAddressCheck';
+import PhoneNumberCheck from './screens/components/PhoneNumberCheck';
+import LinkCheck from './screens/components/LinkCheck';
 
 
 function Navigation(){
@@ -20,8 +23,14 @@ function Navigation(){
                     iconName = focused
                         ? 'ios-home'
                         : 'ios-home-outline';
-                    } else if (route.name === 'Settings') {
-                    iconName = focused ? 'ios-list' : 'ios-list-outline';
+                    } else if (route.name === 'About') {
+                        iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
+                    } else if (route.name === 'Email Check'){
+                        iconName = focused ? 'ios-mail' : 'ios-mail-outline'
+                    } else if (route.name === 'Phone Check'){
+                        iconName = focused ? 'ios-call' : 'ios-call-outline'
+                    } else if (route.name === 'Link Check'){
+                        iconName = focused? 'ios-link' : 'ios-link-outline'
                     }
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
@@ -29,7 +38,12 @@ function Navigation(){
                 tabBarInactiveTintColor: 'gray',
             })}>
                 <Tab.Screen name="Home" component={Home} />
-                <Tab.Screen name="Settings" component={SettingsScreen} />
+
+                <Tab.Screen name="Email Check" component={EmailAddressCheck} />
+                <Tab.Screen name="Phone Check" component={PhoneNumberCheck} />
+                <Tab.Screen name="Link Check" component={LinkCheck} />
+
+                <Tab.Screen name="About" component={About} />
             </Tab.Navigator>
         </NavigationContainer>
     );

@@ -1,9 +1,13 @@
-import React from 'react';
-import {ScrollView, View, Text, Button, Image} from 'react-native';
+import React, { Component } from 'react';
+import {ScrollView, View, Text, Button, Image, TouchableOpacity} from 'react-native';
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 import styles from '../constant/styles';
 
 const HomeScreen = ({navigation}) => {
+    const Stack = createNativeStackNavigator();
+
     const handleEmailAddressCheck = () => {
         navigation.navigate('EmailAddressCheck');
     }
@@ -13,7 +17,7 @@ const HomeScreen = ({navigation}) => {
     }
 
     const handleLinkCheck = () => {
-        navigation.navigate('LinkCheckCheck');
+        navigation.navigate('LinkCheck');
     }
 
     return (
@@ -34,8 +38,11 @@ const HomeScreen = ({navigation}) => {
                         Our app enables you to check the trustworthiness of email addresses. It helps you identify potential risks and determine 
                         if an email address is valid and trustworthy.
                     </Text>
-
-                    <Button title='Check email address' onPress={handleEmailAddressCheck}/>
+                    <TouchableOpacity style={styles.button} onPress={handleEmailAddressCheck}>
+                        <Text style={styles.buttonText}>
+                            Check email
+                        </Text>
+                    </TouchableOpacity>
             </View>
 
             <View style={styles.featureContainer}>
@@ -44,7 +51,11 @@ const HomeScreen = ({navigation}) => {
                         With our app, you can assess the trustworthiness of phone numbers.
                     </Text>
 
-                <Button title='Check phone number' onPress={handlePhoneNumberCheck}/>
+                    <TouchableOpacity style={styles.button} onPress={handlePhoneNumberCheck}>
+                        <Text style={styles.buttonText}>
+                            Check phone number
+                        </Text>
+                    </TouchableOpacity>
             </View>
 
             <View style={styles.featureContainer}>
@@ -53,7 +64,11 @@ const HomeScreen = ({navigation}) => {
                         Our app helps you analyze links and detect potential security threats, phishing attempts, or malicious content. You can check the trustworthiness of links before visiting them.
                     </Text>
 
-                <Button title='Check link trustworthiness' onPress={handleLinkCheck}/>
+                    <TouchableOpacity style={styles.button} onPress={handleLinkCheck}>
+                        <Text style={styles.buttonText}>
+                            Check link
+                        </Text>
+                    </TouchableOpacity>
             </View>
         </ScrollView>
     );
