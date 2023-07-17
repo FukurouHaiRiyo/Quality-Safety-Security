@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
-import {ScrollView, View, Text, Button, Image, TouchableOpacity} from 'react-native';
+import {ScrollView, View, Text, Image, TouchableOpacity} from 'react-native';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useNavigation } from '@react-navigation/native';
 
 
 import styles from '../constant/styles';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
     const Stack = createNativeStackNavigator();
+    const navigation = useNavigation();
 
     const handleEmailAddressCheck = () => {
-        navigation.navigate('EmailAddressCheck');
+        navigation.navigate('Email Check');
     }
 
     const handlePhoneNumberCheck = () => {
-        navigation.navigate('PhoneNumberCheck');
+        navigation.navigate('Phone Check');
     }
 
     const handleLinkCheck = () => {
-        navigation.navigate('LinkCheck');
+        navigation.navigate('Link Check');
     }
 
     return (

@@ -51,6 +51,10 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
 
+    scrollView: {
+      backgroundColor: '#FFFFFF'
+    },  
+
     featureContainer: {
       marginBottom: 20,
       backgroundColor: '#FFFFFF',
