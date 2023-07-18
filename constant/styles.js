@@ -107,6 +107,22 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       textAlign: 'center',
     },
+
+    responseContainer: {
+      marginTop: 20,
+      padding: 10,
+      backgroundColor: '#f0f0f0',
+      borderRadius: 8,
+    },
+
+    responseText:{
+      marginBottom: 8,
+      fontSize: 16
+    },
+
+    responseTitle:{
+      fontWeight: 'bold'
+    }
   });
 
   export default styles;
