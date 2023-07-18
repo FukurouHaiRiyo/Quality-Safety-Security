@@ -29,9 +29,9 @@ This project aims to scan phone numbers, email addresses and links to ensure the
 
 | Field     | Description    | Possible Values            |
 | :-------- | :-------       | :------------------------- |
-| valid     | Does this email address appear valid?       | boolean |
-| spam_trap_score| Confidence level of the email address being an active SPAM trap            | string  |
-| fraud_score| The overall Fraud Score of the user based on the email's reputation and recent behavior across the IPQS threat network| float
+| fraud_score     | The overall Fraud Score of the user based on the email's reputation and recent behavior across the IPQS threat network. Fraud Scores >= 75 are suspicious, but not necessarily fraudulent.       | float |
+| recent_abuse | This value will indicate if there has been any recently verified abuse across our network for this email address            | boolean  |
+| suspect | This value indicates if the mail server is currently replying with a temporary error and unable to verify the email address | boolean
 
 
 ### Phone check 
@@ -50,6 +50,7 @@ This project aims to scan phone numbers, email addresses and links to ensure the
 | fraud_score | The IPQS risk score which estimates how likely a phone number is to be fraudulent| float
 | recent_abuse | Has this phone number been associated with recent or ongoing fraud?| boolean, null
 | risky| Is this phone number associated with fraudulent activity, scams, robo calls, fake accounts, or other unfriendly behavior?| boolean, null
+| spammer | Indicates if the phone number has recently been reported for spam or harassing calls/texts. | boolean
 
 
 
