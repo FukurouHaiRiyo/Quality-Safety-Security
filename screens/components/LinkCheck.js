@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, Touchable} from 'react-native';
 import axios from 'axios';
 
 import styles from '../../constant/styles';
@@ -11,7 +11,7 @@ const LinkCheck = () => {
     const [responseValues, setResponseValues] = useState([]);
 
 
-    const isValidLink = async (link, strictness = 0) => {
+    const validLink = async (link, strictness = 0) => {
         const linkRegex = /^(https?:\/\/)?[a-z0-9.-]+\.[a-z]{2,}(:\d{1,5})?(\/[^@\s]+)?$/i;
         const isValidLink = linkRegex.test(link);
         
@@ -21,20 +21,18 @@ const LinkCheck = () => {
         };
         
 
-        const response = await axios.get(url, {params});
-        console.log(response.data);
+        axios.get(url, {params}).then(response => {
+            const {risk_score, suspicious, unsafe} = response.data;
 
-        if(isValidLink){
-            // const {active, fraud_score, recent_abuse, risky, spammer} = response.data;
+            console.log("Risky: ", risk_score);
+            console.log("Suspicious: ", suspicious);
+            console.log("Unsafe: ", unsafe);
 
-            // console.log("Active status: ", active);
-            // console.log("Fraud score: ", fraud_score);
-            // console.log("Recent abuse: ", recent_abuse);
-            // console.log("Risky: ", risky);
-            // console.log("Spammer: ", spammer);
+
+            console.log(response.data);
 
             setResponseValues(response.data);
-        }
+        }).catch(error => console.log('Error checking link: ', error));
     }
 
     const handleLinkChange = text => {
@@ -42,11 +40,18 @@ const LinkCheck = () => {
     };
 
     const handleLinkCheck = () => {
-        setIsValid(isValidLink(link));
+        setIsValid(validLink(link));
     };
     return (
         <View style={styles.container}>
+            <Text style={styles.title}> Check link </Text>
+            <TextInput style={styles.input} placeholder='Enter a link' valie={link} onChangeText={handleLinkChange}/>
 
+            <TouchableOpacity style={styles.button} onPress={handleLinkCheck}>
+                <Text style={styles.buttonText}>Check</Text>
+            </TouchableOpacity>
+
+            
         </View>
     )
 }
