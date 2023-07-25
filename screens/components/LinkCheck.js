@@ -51,7 +51,49 @@ const LinkCheck = () => {
                 <Text style={styles.buttonText}>Check</Text>
             </TouchableOpacity>
 
-            
+            {isValid !== null && Object.keys(responseValues).length > 0 && (
+                <View style={styles.responseContainer}>
+                    <Text style={[styles.responseText, styles.responseTitle]}>Risky: {responseValues.risk_score}</Text>
+                    <Text style={styles.responseText}>
+                        - Represent how risky the link is(a score over 75 represents a risky link)
+                    </Text>
+
+                    <Text style={[styles.responseText, styles.responseTitle]}>
+                        Suspicious: {
+                            responseValues.suspicious === false && (
+                                <Text style={styles.responseText}>
+                                    Link is not suspicious
+                                </Text>
+                            )
+                        } 
+                        {responseValues.suspicious === true && (
+                            <Text style={styles.responseText}>
+                                Link is suspicious
+                            </Text>
+                        )}
+                    </Text>
+                    <Text style={styles.responseText}>
+                        - Represents how suspicious the link is
+                    </Text>
+
+                    <Text style={[styles.responseText, styles.responseTitle]}>
+                        Unsafe: {
+                            responseValues.unsafe === false && (
+                                <Text style={styles.responseText}>
+                                    Link is safe
+                                </Text>
+                            )
+                        } {responseValues.unsafe === true && (
+                            <Text style={styles.responseText}>
+                                Link is unsafe
+                            </Text>
+                        )}
+                    </Text>
+                    <Text style={styles.responseText}>
+                        - Checks if the link is safe or not
+                    </Text>
+                </View>
+            )}
         </View>
     )
 }
