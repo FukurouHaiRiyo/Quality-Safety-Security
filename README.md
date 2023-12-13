@@ -16,6 +16,7 @@ This project aims to scan phone numbers, email addresses and links to ensure the
 - Malicious URL Scanner & Domain Reputation API - scan URLs and domains to identify zero-day phishing, malware, and suspicious links. Detect parked or hijacked domains and abusive links with real-time domain intelligence backed by advanced machine learning models.
 
 
+
 ## API Reference
 
 ### Email check

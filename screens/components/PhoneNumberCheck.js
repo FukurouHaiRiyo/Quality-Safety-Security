@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 
 import styles from '../../constant/styles';
-import {API_KEY, BASE_URL} from '@env';
+import {API_KEY, BASE_URL} from '@env'
 
 
 const PhoneNumberCheck = () => {

@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
 
     responseText:{
       marginBottom: 8,
-      fontSize: 16
+      fontSize: 16,
     },
 
     responseTitle:{

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, View } from 'react-native';
 import styles from '../constant/styles';
 
+
 const About = () => {
     return (
       <View style={styles.container}>
