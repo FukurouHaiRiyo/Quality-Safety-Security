@@ -16,7 +16,7 @@ const PhoneNumberCheck = () => {
         const phoneNumberRegex = /^\d{10}$/; // Assuming the phone number should be 10 digits
         const isValidPhone = phoneNumberRegex.test(phoneNumber);
         
-        const url = `https://www.ipqualityscore.com/api/json/phone/${REACT_APP_API_KEY}/${phoneNumber}`;
+        const url = `${config.BASE_URL}phone/${REACT_APP_API_KEY}/${phoneNumber}`;
         const params = {
             country: country,
             strictness: strictness,

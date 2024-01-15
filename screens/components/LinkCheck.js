@@ -15,7 +15,7 @@ const LinkCheck = () => {
         const linkRegex = /^(https?:\/\/)?[a-z0-9.-]+\.[a-z]{2,}(:\d{1,5})?(\/[^@\s]+)?$/i;
         const isValidLink = linkRegex.test(link);
         
-        const url = `https://www.ipqualityscore.com/api/json/url/${config.REACT_APP_API_KEY}/${link}`;
+        const url = `${config.BASE_URL}url/${config.REACT_APP_API_KEY}/${link}`;
         const params = {
             strictness: strictness,
         };
