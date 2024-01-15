@@ -28,6 +28,8 @@ const EmailAddressCheck = () => {
                 console.log('Fraud Score:', fraud_score);
                 console.log('Recent abuse:', recent_abuse);
                 console.log('Suspect:', suspect);
+                console.log('Response:', response)
+                console.log(API_KEY)
 
                 setResponseValues(response.data);
             }).catch(error=>console.log('Error checking email: ', error));
@@ -51,14 +53,14 @@ const EmailAddressCheck = () => {
                     </Text>
 
                     <Text style={[styles.responseText, styles.responseTitle]}>
-                        Recent Abuse: {responseValues.recent_abuse.toString()}
+                        Recent Abuse: {responseValues.recent_abuse}
                     </Text>
                     <Text style={styles.responseText}>
                         - This value will indicate if there has been any recent abuse for this email address
                     </Text>
 
                     <Text style={[styles.responseText, styles.responseTitle]}>
-                        Suspect: {responseValues.suspect.toString()}
+                        Suspect: {responseValues.suspect}
                     </Text>
                     <Text style={styles.responseText}>
                         - This value says if the email is suspect or not
