@@ -20,7 +20,7 @@ const EmailAddressCheck = () => {
         setIsValid(isValidEmail);
 
         if(isValidEmail){
-            const API_URL = `https://www.ipqualityscore.com/api/json/email/${config.REACT_APP_API_KEY}/${email}`;
+            const API_URL = `${config.BASE_URL}/email/${config.REACT_APP_API_KEY}/${email}`;
 
             axios.get(API_URL).then(response => {
                 const { fraud_score, recent_abuse, suspect } = response.data;
