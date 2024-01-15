@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 
 import styles from '../../constant/styles';
-import {API_KEY} from '@env';
+import config from '../keys';
 
 const EmailAddressCheck = () => {
     const [email, setEmail] = useState('');
     const [isValid, setIsValid] = useState(false);
     const [responseValues, setResponseValues] = useState([]);
+
+    // REACT_APP_API_KEY='OI0kqRgPTIYNvKsyaAWG0d6Lq63edvYK'
         
     const handleEmailChange = (text) => {
         setEmail(text);
@@ -20,7 +22,7 @@ const EmailAddressCheck = () => {
         setIsValid(isValidEmail);
 
         if(isValidEmail){
-            const API_URL = `https://www.ipqualityscore.com/api/json/email/${API_KEY}/${email}`;
+            const API_URL = `https://www.ipqualityscore.com/api/json/email/${config.REACT_APP_API_KEY}/${email}`;
 
             axios.get(API_URL).then(response => {
                 const { fraud_score, recent_abuse, suspect } = response.data;
@@ -29,7 +31,7 @@ const EmailAddressCheck = () => {
                 console.log('Recent abuse:', recent_abuse);
                 console.log('Suspect:', suspect);
                 console.log('Response:', response)
-                console.log(API_KEY)
+                console.log(config.REACT_APP_API_KEY)
 
                 setResponseValues(response.data);
             }).catch(error=>console.log('Error checking email: ', error));
@@ -53,14 +55,14 @@ const EmailAddressCheck = () => {
                     </Text>
 
                     <Text style={[styles.responseText, styles.responseTitle]}>
-                        Recent Abuse: {responseValues.recent_abuse}
+                        Recent Abuse: {responseValues.recent_abuse.toString()}
                     </Text>
                     <Text style={styles.responseText}>
                         - This value will indicate if there has been any recent abuse for this email address
                     </Text>
 
                     <Text style={[styles.responseText, styles.responseTitle]}>
-                        Suspect: {responseValues.suspect}
+                        Suspect: {responseValues.suspect.toString()}
                     </Text>
                     <Text style={styles.responseText}>
                         - This value says if the email is suspect or not
