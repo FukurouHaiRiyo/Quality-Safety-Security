@@ -122,6 +122,13 @@ const styles = StyleSheet.create({
 
     responseTitle:{
       fontWeight: 'bold'
+    },
+
+    warningText:{
+      fontSize: 16,
+      marginBottom: 20,
+      textAlign: 'center',
+      color: 'red',
     }
   });
 

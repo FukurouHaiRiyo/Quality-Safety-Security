@@ -13,6 +13,10 @@ const About = () => {
             get the trustworthiness results instantly. The user can input an email address and check if it's valid and not abusive,
             enter a phone number to verify its authenticity, and also check links to detect suspicious or malicious URLs.
         </Text>
+
+        <Text style={[styles.description, styles.warningText]}>
+          This part of the app is still under development and might not work properly.
+        </Text>
       </View>
     );
 }

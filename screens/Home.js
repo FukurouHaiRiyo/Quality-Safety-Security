@@ -35,6 +35,10 @@ const HomeScreen = () => {
                 Our app provides comprehensive trustworthiness checks for various information types. You can verify the following: 
             </Text>
 
+            <Text style={[styles.description, styles.warningText]}>
+                Before using the app, check the "About" section
+            </Text>
+
             <View style={styles.featureContainer}>
                 <Text style={styles.featureTitle}>Email address trustworthiness</Text>
                     <Text style={styles.featureDescription}>

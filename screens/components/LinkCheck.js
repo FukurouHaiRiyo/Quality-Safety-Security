@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, Touchable} from 'react-native';
 import axios from 'axios';
 
 import styles from '../../constant/styles';
-import {API_KEY, BASE_URL} from '@env'
+import config from '../keys';
 
 const LinkCheck = () => {
     const [link, setLink] = useState('');
@@ -15,11 +15,12 @@ const LinkCheck = () => {
         const linkRegex = /^(https?:\/\/)?[a-z0-9.-]+\.[a-z]{2,}(:\d{1,5})?(\/[^@\s]+)?$/i;
         const isValidLink = linkRegex.test(link);
         
-        const url = `${BASE_URL}url/${API_KEY}/${link}`;
+        const url = `https://www.ipqualityscore.com/api/json/url/${config.REACT_APP_API_KEY}/${link}`;
         const params = {
             strictness: strictness,
         };
         
+        console.log(url);
 
         axios.get(url, {params}).then(response => {
             const {risk_score, suspicious, unsafe} = response.data;
@@ -27,6 +28,7 @@ const LinkCheck = () => {
             console.log("Risky: ", risk_score);
             console.log("Suspicious: ", suspicious);
             console.log("Unsafe: ", unsafe);
+            console.log("Response: ", response)
 
 
             console.log(response.data);

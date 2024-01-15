@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 
 import styles from '../../constant/styles';
-import {API_KEY, BASE_URL} from '@env'
+import {REACT_APP_API_KEY} from '../keys';
 
 
 const PhoneNumberCheck = () => {
@@ -16,7 +16,7 @@ const PhoneNumberCheck = () => {
         const phoneNumberRegex = /^\d{10}$/; // Assuming the phone number should be 10 digits
         const isValidPhone = phoneNumberRegex.test(phoneNumber);
         
-        const url = `${BASE_URL}phone/${API_KEY}/${phoneNumber}`;
+        const url = `https://www.ipqualityscore.com/api/json/phone/${REACT_APP_API_KEY}/${phoneNumber}`;
         const params = {
             country: country,
             strictness: strictness,
@@ -62,21 +62,16 @@ const PhoneNumberCheck = () => {
     return(
         <View style={styles.container}>
             <Text style={styles.title}>Check phone number</Text>
-            <TextInput style={styles.input} placeholder='Enter a phone number' value={phoneNumber} onChangeText={handlePhoneNumberChange}/>
+            <TextInput style={styles.input} placeholder='Enter a phone number' value={phoneNumber} onChangeText={handlePhoneNumberChange} keyboardType='numeric'/>
             <TouchableOpacity style={styles.button} onPress={handleCheckPhoneNumber}>
                 <Text style={styles.buttonText}>Check</Text>
             </TouchableOpacity>
 
-            {isValid !== null && Object.keys(responseValues).length > 0 && (
+            {isValidPhone !== null && Object.keys(responseValues).length > 0 && (
                 <View style={styles.responseContainer}>
-                    <Text style={[styles.responseText, styles.responseTitle]}>Fraud score: {responseValues.fraud_score}</Text>
-                    <Text style={styles.responseText}>
-                        - Represents how fraudulent the phone numebr is (value bigger than 75 means that the mail is suspicious)
-                    </Text>
-
                     <Text style={[styles.responseText, styles.responseTitle]}>
                         Recent Abuse: {
-                            responseValues.recent_abuse === null && (<Text style={styles.responseText}>
+                            responseValues.recent_abuse === null || responseValues.recent_abuse == undefined && (<Text style={styles.responseText}>
                                 No abuse
                             </Text>)
                         }
