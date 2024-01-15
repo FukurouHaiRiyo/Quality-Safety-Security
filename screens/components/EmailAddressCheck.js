@@ -9,8 +9,6 @@ const EmailAddressCheck = () => {
     const [email, setEmail] = useState('');
     const [isValid, setIsValid] = useState(false);
     const [responseValues, setResponseValues] = useState([]);
-
-    // REACT_APP_API_KEY='OI0kqRgPTIYNvKsyaAWG0d6Lq63edvYK'
         
     const handleEmailChange = (text) => {
         setEmail(text);
