@@ -19,19 +19,19 @@ function Navigation(){
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
-                    // if (route.name === 'Home') {
-                    // iconName = focused
-                    //     ? 'ios-home'
-                    //     : 'ios-home-outline';
-                    // } else if (route.name === 'About') {
-                    //     iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
-                    // } else if (route.name === 'Email Check'){
-                    //     iconName = focused ? 'ios-mail' : 'ios-mail-outline'
-                    // } else if (route.name === 'Phone Check'){
-                    //     iconName = focused ? 'ios-call' : 'ios-call-outline'
-                    // } else if (route.name === 'Link Check'){
-                    //     iconName = focused? 'ios-link' : 'ios-link-outline'
-                    // }
+                    if (route.name === 'Home') {
+                    iconName = focused
+                        ? 'home'
+                        : 'home-outline';
+                    } else if (route.name === 'About') {
+                        iconName = focused ? 'information-circle' : 'information-circle-outline';
+                    } else if (route.name === 'Email Check'){
+                        iconName = focused ? 'mail' : 'mail-outline'
+                    } else if (route.name === 'Phone Check'){
+                        iconName = focused ? 'call' : 'call-outline'
+                    } else if (route.name === 'Link Check'){
+                        iconName = focused? 'link' : 'link-outline'
+                    }
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
                 tabBarActiveTintColor: 'tomato',
